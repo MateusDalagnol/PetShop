@@ -17,16 +17,16 @@ public class Agenda {
         return clientes;
     }
 
-    public void exibirServico(String cliente) {
+    public void exibirServico() {
         for (Cliente c : clientes) {
-            if (c.getNome().equals(cliente)) {
                 System.out.println("Exibir informações cliente\n" +
                         "Nome: " + c.getNome() +
                         "\nEmail: " + c.getEmail() +
-                        "\nTelefone: " + c.getTelefone());
+                        "\nTelefone: " + c.getTelefone() +
+                        "\nAnimal: " + c.getServicosAgendados().toString());
+
 
                 break;
-            }
         }
     }
 

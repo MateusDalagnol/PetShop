@@ -8,4 +8,13 @@ public class Padrao extends Servico {
 
     }
     
+    @Override
+    public String toString() {
+        return "Padrao: " +
+                "\n  Animal = " + getAnimal().toString() +
+                "\n  Responsavel = " + getResponsavel().toString() +
+                "\n  Status = " + getStatus() +
+                "\n  Data = " + getData() +
+                "\n";
+    }
 }

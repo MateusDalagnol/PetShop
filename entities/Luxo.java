@@ -7,6 +7,7 @@ public class Luxo extends Servico {
     private double precoAdd = 50.0;
     private double precoTransporte = 30.00;
 
+
     public Luxo(Animal animal, Funcionario responsavel, StatusServico status, boolean incluiTransporte, Date data) {
         super(animal, responsavel, status, data);
         this.incluiTransporte = incluiTransporte;
@@ -36,32 +37,31 @@ public class Luxo extends Servico {
     public void setPrecoTransporte(double precoTransporte) {
         this.precoTransporte = precoTransporte;
     }
-    
-    public void alterarPrecoAdd(double precoNovo){
+
+    public void alterarPrecoAdd(double precoNovo) {
         setPrecoAdd(precoNovo);
     }
 
-    public void alterarPrecoTransporte(double precoNovo){
+    public void alterarPrecoTransporte(double precoNovo) {
         setPrecoTransporte(precoNovo);
     }
-    
-    public double calcularPrecoFinal(){
-        if(incluiTransporte){
-            return getPrecoBase() + getPrecoAdd() + getPrecoTransporte();
+
+    public double calcularPrecoFinal() {
+        if (incluiTransporte) {
+            return getPrecoBase() + getPrecoAdd() + getPrecoTransporte() + (15*getServicosAdd());
         }
-        return getPrecoAdd() + getPrecoBase();
+        return getPrecoAdd() + getPrecoBase() + (15*getServicosAdd());
     }
 
     @Override
     public String toString() {
-        return "Luxo [incluiTransporte=" + incluiTransporte + ", precoAdd=" + precoAdd + ", precoTransporte="
-                + precoTransporte + ", isIncluiTransporte()=" + isIncluiTransporte() + ", getAnimal()=" + getAnimal()
-                + ", getPrecoAdd()=" + getPrecoAdd() + ", getResponsavel()=" + getResponsavel()
-                + ", getPrecoTransporte()=" + getPrecoTransporte() + ", getPrecoBase()=" + getPrecoBase()
-                + ", getStatus()=" + getStatus() + ", getData()=" + getData() + ", calcularPrecoFinal()="
-                + calcularPrecoFinal() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-                + super.toString() + "]";
+        return "Luxo: " +
+                "\n  Transporte = " + isIncluiTransporte() +
+                "\n  Animal = " + getAnimal().toString() +
+                "\n  Responsavel = " + getResponsavel().toString() +
+                "\n  Status = " + getStatus() +
+                "\n  Data = " + getData() +
+                "\n";
     }
 
-    
 }

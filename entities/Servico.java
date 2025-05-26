@@ -5,7 +5,7 @@ public class Servico {
 
     private Animal animal;
     private Funcionario responsavel;
-    private double precoBase = 100.00;
+    private static double precoBase = 100.00;
     private int servicosAdd = 0;
     private StatusServico status;
     private Date data;
@@ -38,8 +38,8 @@ public class Servico {
         return precoBase;
     }
 
-    public void setPrecoBase(double precoBase) {
-        this.precoBase = precoBase;
+    public static void setPrecoBase(double precoBase) {
+        Servico.precoBase = precoBase;
     }
 
     public StatusServico getStatus() {
@@ -60,22 +60,36 @@ public class Servico {
 
     public void alterarData(Date date){
         setData(date);
+        System.out.println("Data alterada!");
     }
 
-    public void alterarPrecoBase(double precoNovo){
+    public static void alterarPrecoBase(double precoNovo){
         setPrecoBase(precoNovo);
+        System.out.println("Preco alterado!");
     }
 
     public void vacinar(){
-        animal.setVacinado(true);
-        servicosAdd++;
+        if(!getAnimal().isVacinado()){
+            animal.setVacinado(true);
+            System.out.println("Vacinado!");
+            servicosAdd++;
+        }else{
+            System.out.println("Animal ja vacinado");
+        }
+        
     }
 
     public void mudarStatus(StatusServico status){
         setStatus(status);
+        System.out.println("Status alterado!");
     }
 
     public double calcularPrecoFinal() {
         return precoBase + (15*servicosAdd);
     }
+
+    public int getServicosAdd() {
+        return servicosAdd;
+    }
+
 }

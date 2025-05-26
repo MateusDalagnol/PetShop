@@ -23,4 +23,16 @@ public class AnimalExotico extends Animal {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Exotico: " +
+                "\n  Especie = " + getEspecie() +
+                "\n  Nome = " + getNome() +
+                "\n  Idade = " + getIdade() +
+                "\n  Peso = " + getPeso() +
+                "\n  Vacinado = " + isVacinado() +
+                "\n  Cor = " + getCor() +
+                "\n";
+    }
 }

@@ -1,5 +1,5 @@
 public class Funcionario {
-    
+
     private String nome;
     private String turno;
 
@@ -24,8 +24,16 @@ public class Funcionario {
         this.turno = turno;
     }
 
-    public void trocarTurno(String novoTurno){
+    public void trocarTurno(String novoTurno) {
         setTurno(novoTurno);
     }
-    
+
+    @Override
+    public String toString() {
+        return "Funcionario: " +
+                "\n  Nome = " + getNome() +
+                "\n  Turno = " + getTurno() +
+                "\n";
+    }
+
 }
