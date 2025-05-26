@@ -4,8 +4,8 @@ import enums.StatusServico;
 public class Luxo extends Servico {
 
     private boolean incluiTransporte;
-    private double precoAdd = 50.0;
-    private double precoTransporte = 30.00;
+    private static double precoAdd = 50.0;
+    private static double precoTransporte = 30.00;
 
 
     public Luxo(Animal animal, Funcionario responsavel, StatusServico status, boolean incluiTransporte, Date data) {
@@ -26,23 +26,23 @@ public class Luxo extends Servico {
         return precoAdd;
     }
 
-    public void setPrecoAdd(double precoAdd) {
-        this.precoAdd = precoAdd;
+    public static void setPrecoAdd(double precoAdd) {
+        Luxo.precoAdd = precoAdd;
     }
 
     public double getPrecoTransporte() {
         return precoTransporte;
     }
 
-    public void setPrecoTransporte(double precoTransporte) {
-        this.precoTransporte = precoTransporte;
+    public static void setPrecoTransporte(double precoTransporte) {
+        Luxo.precoTransporte = precoTransporte;
     }
 
-    public void alterarPrecoAdd(double precoNovo) {
+    public static void alterarPrecoAdd(double precoNovo) {
         setPrecoAdd(precoNovo);
     }
 
-    public void alterarPrecoTransporte(double precoNovo) {
+    public static void alterarPrecoTransporte(double precoNovo) {
         setPrecoTransporte(precoNovo);
     }
 

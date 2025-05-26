@@ -17,19 +17,6 @@ public class Agenda {
         return clientes;
     }
 
-    public void exibirServico() {
-        for (Cliente c : clientes) {
-                System.out.println("Exibir informações cliente\n" +
-                        "Nome: " + c.getNome() +
-                        "\nEmail: " + c.getEmail() +
-                        "\nTelefone: " + c.getTelefone() +
-                        "\nAnimal: " + c.getServicosAgendados().toString());
-
-
-                break;
-        }
-    }
-
     public void addCliente(Cliente cliente) {
         clientes.add(cliente);
     }

@@ -31,17 +31,16 @@ public class Main {
             opcao = sc.nextInt();
             switch (opcao) {
                 case 1:
-                    cliente(agenda);
-                    opcao = 99;
+                    cliente(agenda, sc);
                     break;
                 case 2:
-                    servico(agenda);
+                    servico(agenda, sc);
                     break;
                 case 3:
-                    funcionario();
+                    funcionario(sc);
                     break;
                 case 4:
-                    exibir(agenda);
+                    exibir(agenda, sc);
                     break;
 
                 default:
@@ -53,15 +52,13 @@ public class Main {
         sc.close();
     }
 
-    private static void exibir(Agenda agenda) {
+    private static void exibir(Agenda agenda, Scanner sc) {
         int opcao;
-        Scanner sc = new Scanner(System.in);
         do {
             opcao = sc.nextInt();
 
             switch (opcao) {
                 case 1:
-                    agenda.exibirServico();
                     break;
                 case 2:
                     break;
@@ -72,9 +69,8 @@ public class Main {
         } while (opcao != 0);
     }
 
-    private static void funcionario() {
+    private static void funcionario(Scanner sc) {
         int opcao;
-        Scanner sc = new Scanner(System.in);
         do {
 
             System.out.println("\n-------------------\n\n" +
@@ -96,6 +92,12 @@ public class Main {
                     Dados.funcionarios.add(new Funcionario(name, turno));
                     break;
                 case 2:
+                    System.out.print("Nome do funcionario: ");
+                    String nomeFuncionario = sc.nextLine();
+                    System.out.print("Digite o novo turno: ");
+                    String novoTurno = sc.nextLine();
+                    Funcionario f = buscarFuncionario(nomeFuncionario, Dados.funcionarios);
+                    f.trocarTurno(novoTurno);
                     break;
                 default:
                     opcao = 0;
@@ -104,9 +106,8 @@ public class Main {
         } while (opcao != 0);
     }
 
-    private static void servico(Agenda agenda) throws ParseException {
+    private static void servico(Agenda agenda, Scanner sc) throws ParseException {
         int opcao;
-        Scanner sc = new Scanner(System.in);
         SimpleDateFormat sdt = new SimpleDateFormat("dd/MM/yyyy");
         do {
             System.out.println("\n-------------------\n\n" +
@@ -117,6 +118,8 @@ public class Main {
                     "5 - Vacinar\n" +
                     "6 - ALterar preco base\n" +
                     "7 - Calcular preco final\n" +
+                    "8 - Alterar preco transporte - PACOTE LUXO\n" +
+                    "9 - ALterar preco adicional - PACOTE LUXO\n" +
                     "0 - Voltar para o menu\n" +
                     "\n-------------------\n");
 
@@ -358,6 +361,17 @@ public class Main {
                             "\nservicos adicionais: " + servico.getServicosAdd());
                     break;
                 }
+                case 8: {
+                    System.out.print("Digite o novo preco transporte - PACOTE LUXO: ");
+                    double novoPreco = sc.nextDouble();
+                    Luxo.alterarPrecoTransporte(novoPreco);
+                    break;
+                }
+                case 9: {
+                    System.out.print("Digite o novo preco adicional - PACOTE LUXO: ");
+                    Double novoPreco = sc.nextDouble();
+                    Luxo.alterarPrecoAdd(novoPreco);
+                }
                 default:
                     System.out.println("Opcao invalida!");
                     break;
@@ -365,10 +379,8 @@ public class Main {
         } while (opcao != 0);
     }
 
-    private static void cliente(Agenda agenda) {
+    private static void cliente(Agenda agenda, Scanner sc) {
         int opcao;
-        Scanner sc = new Scanner(System.in);
-
         do {
 
             System.out.println("\n----------------------\n\n" +
