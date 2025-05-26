@@ -9,11 +9,11 @@ public class Servico {
     private int servicosAdd = 0;
     private StatusServico status;
     private Date data;
+    
 
-    public Servico(Animal animal, Funcionario responsavel, double precoBase, StatusServico status, Date data) {
+    public Servico(Animal animal, Funcionario responsavel, StatusServico status, Date data) {
         this.animal = animal;
         this.responsavel = responsavel;
-        this.precoBase = precoBase;
         this.status = status;
         this.data = data;
     }
