@@ -24,16 +24,14 @@ public class Cachorro extends Animal {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Cachorro: " +
+    public void exibirAnimal() {
+         System.out.println("Cachorro" +
                 "\n  Raca = " + getRaca() +
                 "\n  Nome = " + getNome() +
                 "\n  Idade = " + getIdade() +
                 "\n  Peso = " + getPeso() +
                 "\n  Vacinado = " + isVacinado() +
-                "\n  Cor = " + getCor() +
-                "\n";
+                "\n  Cor = " + getCor());
     }
 
 }

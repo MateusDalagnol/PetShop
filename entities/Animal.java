@@ -55,7 +55,14 @@ public abstract class Animal {
     }
 
     public boolean precisaVacina(){
-        return isVacinado();
+        if(isVacinado()){
+            System.out.println("Esta vacinado");
+            return true;
+        }else{
+            System.out.println("Não esta vacinado");
+            return false;
+        }
+        
     }
 
 }

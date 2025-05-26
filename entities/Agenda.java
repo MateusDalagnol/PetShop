@@ -1,9 +1,11 @@
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Agenda {
 
     private List<Cliente> clientes;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public Agenda() {
         this.clientes = new ArrayList<>();
@@ -30,6 +32,18 @@ public class Agenda {
             }
         }
         System.out.println("Cliente não encontrado.");
+    }
+
+    public void exibirAgenda(){
+        System.out.println("Clientes agendados: ");
+        for (Cliente cliente : clientes) {
+            System.out.println("\nNome do cliente: " + cliente.getNome());
+            List<Servico> lServicos = cliente.getServicosAgendados();
+            for (Servico servico : lServicos) {
+                System.out.println("\n    Nome animal: " + servico.getAnimal().getNome() + "\n    Data: " + sdf.format(servico.getData()));
+            }
+            
+        }
     }
 
 }

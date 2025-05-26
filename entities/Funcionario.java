@@ -30,10 +30,9 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Funcionario: " +
+        return "Funcionario" +
                 "\n  Nome = " + getNome() +
-                "\n  Turno = " + getTurno() +
-                "\n";
+                "\n  Turno = " + getTurno();
     }
 
 }
