@@ -202,19 +202,19 @@ public class Main {
                 switch (opcao) {
                     case '1':
                         if (!Dados.funcionarios.isEmpty() && !agenda.getClientes().isEmpty()) {
-                            
+
                             char opcaoAnimal = 99;
                             while (opcaoAnimal != '1' && opcaoAnimal != '2' && opcaoAnimal != '3') {
                                 System.out.println("\n----------------\n\n" +
-                                    "Cadastro de servico: \n" +
-                                    "1 - Cachorro\n" +
-                                    "2 - Gato\n" +
-                                    "3 - Animal Generico\n" +
-                                    "\n----------------\n");
+                                        "Cadastro de servico: \n" +
+                                        "1 - Cachorro\n" +
+                                        "2 - Gato\n" +
+                                        "3 - Animal Generico\n" +
+                                        "\n----------------\n");
                                 System.out.print("Escolha uma opção: ");
                                 opcaoAnimal = sc.next().charAt(0);
                             }
-                            
+
                             System.out.print("Nome do Animal: ");
                             sc.nextLine();
                             String nomeAnimal = sc.nextLine();
@@ -233,23 +233,23 @@ public class Main {
                             sc.nextLine();
                             String corAnimal = sc.nextLine();
                             String nomeFuncionario;
-                            do{
-                            System.out.print("Nome do funcionario responsavel: ");
-                            nomeFuncionario = sc.nextLine();
-                            if(buscarFuncionario(nomeFuncionario, Dados.funcionarios) == null){
-                                System.out.println("Este funcionario nao existe!\n");
-                            }
-                            }while(buscarFuncionario(nomeFuncionario, Dados.funcionarios) == null);
+                            do {
+                                System.out.print("Nome do funcionario responsavel: ");
+                                nomeFuncionario = sc.nextLine();
+                                if (buscarFuncionario(nomeFuncionario, Dados.funcionarios) == null) {
+                                    System.out.println("Este funcionario nao existe!\n");
+                                }
+                            } while (buscarFuncionario(nomeFuncionario, Dados.funcionarios) == null);
                             System.out.print("Data: ");
                             Date data = sdf.parse(sc.nextLine());
                             String nomeCliente;
-                            do{
+                            do {
                                 System.out.print("Nome do cliente: ");
                                 nomeCliente = sc.nextLine();
-                                if(buscarCliente(nomeFuncionario, agenda.getClientes())==null){
+                                if (buscarCliente(nomeCliente, agenda.getClientes()) == null) {
                                     System.out.println("Este cliente nao existe!\n");
                                 }
-                            }while(buscarCliente(nomeFuncionario, agenda.getClientes())==null);
+                            } while (buscarCliente(nomeCliente, agenda.getClientes()) == null);
 
                             System.out.println("tipo de servico: ");
                             System.out.println("\n-------------------\n\n" +
@@ -275,7 +275,8 @@ public class Main {
 
                                 StatusServico status = StatusServico.AGENDADO;
                                 switch (opcaoAnimal) {
-                                    case '1':
+                                    case '1': {
+
                                         System.out.print("Raca:");
                                         sc.nextLine();
                                         raca = sc.nextLine();
@@ -287,7 +288,8 @@ public class Main {
 
                                         c.agendarServico(servico);
                                         break;
-                                    case '2':
+                                    }
+                                    case '2': {
                                         System.out.print("Raca:");
                                         sc.nextLine();
                                         raca = sc.nextLine();
@@ -299,7 +301,8 @@ public class Main {
 
                                         c.agendarServico(servico);
                                         break;
-                                    case '3':
+                                    }
+                                    case '3': {
                                         System.out.print("Especie:");
                                         sc.nextLine();
                                         String especie = sc.nextLine();
@@ -312,6 +315,8 @@ public class Main {
                                                 status, transporte, data);
 
                                         c.agendarServico(servico);
+                                        break;
+                                    }
                                     default:
                                         System.out.println("Opções invalidas!");
                                         break;
@@ -472,10 +477,12 @@ public class Main {
             } catch (NullPointerException e) {
                 System.out.println("\nO objeto de vc tentou acessar nao existe!");
                 opcao = 99;
-            } catch (InputMismatchException e){
-                System.out.println("Erro: entrada inválida. Por favor, digite a entrada corretamente");
+            } catch (InputMismatchException e) {
+                System.out.println("Erro: entrada inválida. Por favor, digite a entrada corretamente!");
+            } catch (Exception e){
+                System.err.println("Erro: insesperado!");
             }
-        }while(opcao!='0');
+        } while (opcao != '0');
 
     }
 
@@ -559,14 +566,15 @@ public class Main {
 
     }
 
-    private static Servico informarServico(Scanner sc, Agenda agenda, SimpleDateFormat sdt, Cliente cliente) throws ParseException {
+    private static Servico informarServico(Scanner sc, Agenda agenda, SimpleDateFormat sdt, Cliente cliente)
+            throws ParseException {
         System.out.print("\nNome do Animal: ");
         try {
             String nomeAnimal = sc.nextLine();
-        System.out.print("Data do servico: ");
-        Date data = sdt.parse(sc.next());
+            System.out.print("Data do servico: ");
+            Date data = sdt.parse(sc.next());
 
-        return buscarServico(nomeAnimal, data, cliente.getServicosAgendados());
+            return buscarServico(nomeAnimal, data, cliente.getServicosAgendados());
         } catch (NullPointerException e) {
             System.out.println("Este clinte nao existe!");
             return null;
