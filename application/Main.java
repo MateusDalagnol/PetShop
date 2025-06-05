@@ -9,7 +9,7 @@ import java.util.Scanner;
 import enums.StatusServico;
 
 public class Main {
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         Locale.setDefault(Locale.US);
@@ -54,7 +54,7 @@ public class Main {
         sc.close();
     }
 
-    private static void exibir(Agenda agenda, Scanner sc, SimpleDateFormat sdf) throws ParseException {
+    private static void exibir(Agenda agenda, Scanner sc, SimpleDateFormat sdf) {
         char opcao;
         do {
 
@@ -178,7 +178,7 @@ public class Main {
         } while (opcao != '0');
     }
 
-    private static void servico(Agenda agenda, Scanner sc) throws ParseException {
+    private static void servico(Agenda agenda, Scanner sc) {
         char opcao = 99;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         do {
@@ -479,7 +479,9 @@ public class Main {
                 opcao = 99;
             } catch (InputMismatchException e) {
                 System.out.println("Erro: entrada inválida. Por favor, digite a entrada corretamente!");
-            } catch (Exception e){
+            } catch(ParseException e){
+                 System.out.println("Erro ao ler a data. Formato correto: dd/MM/yyyy");
+            }catch (Exception e){
                 System.err.println("Erro: insesperado!");
             }
         } while (opcao != '0');
@@ -567,7 +569,7 @@ public class Main {
     }
 
     private static Servico informarServico(Scanner sc, Agenda agenda, SimpleDateFormat sdt, Cliente cliente)
-            throws ParseException {
+         {
         System.out.print("\nNome do Animal: ");
         try {
             String nomeAnimal = sc.nextLine();
@@ -578,6 +580,9 @@ public class Main {
         } catch (NullPointerException e) {
             System.out.println("Este clinte nao existe!");
             return null;
+        } catch(ParseException e){
+             System.out.println("Erro ao ler a data. Formato correto: dd/MM/yyyy");
+             return null;
         }
     }
 
